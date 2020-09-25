@@ -1,5 +1,182 @@
-$red: red;
+// Variables
+$black: #282828;
+$green: #188038;
+$border-color: #D9D9DE;
+$border-line: 1px solid $border-color;
+$outline: 2px solid $green;
 
-body {
-  background-color: $red;
+$cell-width: 120px;
+$cell-height: 25px;
+$info-cell-width: 46px;
+
+$info-cell-bg: #f8f9fa;
+
+@mixin button {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  color: $black;
+}
+
+#app {}
+
+.excel {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: $border-line;
+  }
+
+  &__title {
+    padding: 5px;
+    font-size: 22px;
+    border: none;
+
+    &:focus, &:active {
+      outline: $outline;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__btn {
+    @include button;
+    display: block;
+    width: 28px;
+    height: 28px;
+    margin-left: 15px;
+  }
+
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 10px 20px;
+    border-bottom: $border-line;
+    box-sizing: border-box;
+  }
+
+  &__toolbar-btn {
+    @include button;
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+
+    i {
+      font-size: 20px;
+    }
+  }
+
+  &__formula {
+    display: flex;
+    align-items: center;
+    height: $cell-height;
+    border-bottom: $border-line;
+  }
+
+  &__formula-heading {
+    width: $info-cell-width;
+    font-size: 20px;
+    font-style: italic;
+    text-align: center;
+    border-right: $border-line;
+    opacity: 0.5;
+  }
+
+  &__formula-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 5px;
+    font-size: 14px;
+    outline: none;
+    border: none;
+  }
+}
+
+.table {
+  width: 100%;
+  height: calc(100% - 135px);
+  overflow: auto;
+
+  &:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 10px;
+  }
+
+  &__info-row {
+    display: flex;
+    height: $cell-height;
+  }
+
+  &__info-col {
+    flex: 0 0 $cell-width;
+    height: $cell-height;
+    padding: 6px 0;
+    font-size: 12px;
+    box-sizing: border-box;
+    border: 1px solid $border-color;
+    border-top: none;
+    border-left: none;
+    text-align: center;
+    background-color: #f8f9fa;
+    color: #64686d;
+
+    &:first-child {
+      flex: 0 0 $info-cell-width;
+    }
+  }
+
+  &__row {
+    display: flex;
+    height: $cell-height;
+  }
+
+  &__col {
+    width: $cell-width;
+    height: $cell-height;
+    padding: 6px 0;
+    font-size: 14px;
+    box-sizing: border-box;
+    border: 1px solid $border-color;
+    border-top: none;
+    border-left: none;
+
+    &:not(&_index) {
+      &:focus, &:active {
+        outline: $outline;
+        border-color: transparent;
+        z-index: 10;
+      }
+    }
+
+    &_index {
+      width: $info-cell-width;
+      text-align: center;
+      font-size: 12px;
+      background-color: #f8f9fa;
+      color: #64686d;
+    }
+  }
 }
