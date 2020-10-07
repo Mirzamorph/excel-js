@@ -11,7 +11,12 @@
     "comma-dangle": "off",
     "arrow-parens": "off",
     "object-curly-spacing": "off",
-    "require-jsdoc": "off"
+    "require-jsdoc": "off",
+    "padded-blocks": "off",
+    "max-len": "off"
   },
-  "extends": ["eslint:recommended", "google"]
+  "extends": [
+    "eslint:recommended",
+    "google"
+  ]
 }
