@@ -1,6 +1,13 @@
 import ExcelComponent from '@core/ExcelComponent'
 
 export default class Header extends ExcelComponent {
+    constructor($root) {
+        super($root, {
+            name: 'Header',
+            listeners: ['input']
+        })
+    }
+
     static className = 'excel__header'
 
     toHTML() {
@@ -15,5 +22,9 @@ export default class Header extends ExcelComponent {
             </button>
         </div>
         `
+    }
+
+    onInput() {
+        console.log('Input event in header component')
     }
 }
