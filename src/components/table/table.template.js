@@ -6,7 +6,12 @@ const CODE = {
 const columnCount = CODE.Z - CODE.A + 1
 
 function createInfoCol(_, index) {
-    return `<div class="table__column-info">${String.fromCharCode(CODE.A + index)}</div>`
+    return `
+        <div class="table__column-info">
+            ${String.fromCharCode(CODE.A + index)}
+            <div class="table__col-resize"></div>
+        </div>
+    `
 }
 
 function createCol(content = '') {
@@ -14,10 +19,13 @@ function createCol(content = '') {
 }
 
 function createRow(index, cols) {
-
+    const resize = index !== '#' ? '<div class="table__row-resize"></div>' : ''
     return `
         <div class="table__row">
-            <div class="table__row-info">${index}</div>
+            <div class="table__row-info">
+                ${index}
+                ${resize}
+            </div>
             ${cols}
         </div>
     `
