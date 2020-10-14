@@ -7,22 +7,22 @@ const columnCount = CODE.Z - CODE.A + 1
 
 function createInfoCol(_, index) {
     return `
-        <div class="table__column-info">
+        <div class="table__column-info" data-type="resizable" data-col="${index}">
             ${String.fromCharCode(CODE.A + index)}
-            <div class="table__col-resize"></div>
+            <div class="table__col-resize" data-resize="col"></div>
         </div>
     `
 }
 
-function createCol(content = '') {
-    return `<div class="table__column" contenteditable="true" spellcheck="false">${content}</div>`
+function createCol(content = '', index) {
+    return `<div class="table__column" contenteditable="true" spellcheck="false" data-col="${index}">${content}</div>`
 }
 
 function createRow(index, cols) {
-    const resize = index !== '#' ? '<div class="table__row-resize"></div>' : ''
+    const resize = index !== '#' ? '<div class="table__row-resize" data-resize="row"></div>' : ''
     return `
         <div class="table__row">
-            <div class="table__row-info">
+            <div class="table__row-info" data-type="resizable">
                 ${index}
                 ${resize}
             </div>

@@ -30,6 +30,19 @@ class Dom {
     off(eventType, callback) {
         this.$el.removeEventListener(eventType, callback)
     }
+
+    closest(selector) {
+        return $(this.$el.closest(selector))
+    }
+
+    getCoords() {
+        return this.$el.getBoundingClientRect()
+    }
+
+    setWidth(width) {
+        if (typeof width !== 'number') throw new Error(`Incorrect width for element ${this.$el}`)
+        return this.$el.style.width = `${width}px`
+    }
 }
 
 export function $(selector) {
