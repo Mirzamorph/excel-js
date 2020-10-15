@@ -156,7 +156,10 @@ $info-cell-bg: #f8f9fa;
   }
 
   &__column {
-    flex: 0 0 $cell-width;
+    flex-shrink: 0;
+    width: $cell-width;
+    max-width: 500px;
+    min-width: 50px;
     height: $cell-height;
     padding: 6px 3px;
     font-size: 14px;

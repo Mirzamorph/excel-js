@@ -39,6 +39,10 @@ class Dom {
         return this.$el.getBoundingClientRect()
     }
 
+    get data() {
+        return this.$el.dataset
+    }
+
     setWidth(width) {
         if (typeof width !== 'number') throw new Error(`Incorrect width for element ${this.$el}`)
         return this.$el.style.width = `${width}px`
