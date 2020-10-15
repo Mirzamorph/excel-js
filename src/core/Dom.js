@@ -30,6 +30,32 @@ class Dom {
     off(eventType, callback) {
         this.$el.removeEventListener(eventType, callback)
     }
+
+    closest(selector) {
+        return $(this.$el.closest(selector))
+    }
+
+    getCoords() {
+        return this.$el.getBoundingClientRect()
+    }
+
+    get data() {
+        return this.$el.dataset
+    }
+
+    findAll(selector) {
+        return this.$el.querySelectorAll(selector)
+    }
+
+    css(styles = {}) {
+        Object.keys(styles).forEach(key => {
+            if (this.$el.style[key] !== undefined) {
+                this.$el.style[key] = styles[key]
+                return this
+            }
+            throw new Error(`Incorrect style property "${key}" for element ${this.$el.className}`)
+        })
+    }
 }
 
 export function $(selector) {
