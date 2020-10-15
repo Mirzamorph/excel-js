@@ -19,23 +19,28 @@ export default class Table extends ExcelComponent {
     resizeColumn
 
     onMousedown(event) {
-        if (event.target.dataset.resize) {
+        const resize = event.target.dataset.resize
+        if (resize) {
             const $parent = $(event.target).closest('[data-type="resizable"]')
             const coords = $parent.getCoords()
-            document.onmousemove = (e) => {
-                if (typeof movewait !== 'undefined') {
-                    clearTimeout(movewait)
-                }
-                const movewait = setTimeout(() => {
+
+            if (resize === 'col') {
+                const col = $parent.data.col
+                const cols = this.$root.$el.querySelectorAll(`[data-col="${col}"]`)
+                document.onmousemove = (e) => {
                     const delta = e.pageX - coords.right
-                    const column = $parent.data.col
                     const value = coords.width + delta
-                    // $parent.setWidth(value)
-                    console.log('reszing')
-                    document.querySelectorAll(`[data-col="${column}"]`)
-                        .forEach(el => $(el).setWidth(value))
-                }, 100)
+                    cols.forEach(el => $(el).setWidth(value))
+                }
+            } else {
+                document.onmousemove = (e) => {
+                    const delta = e.pageY - coords.bottom
+                    console.log(e.pageY, coords.bottom)
+                    const value = coords.height + delta
+                    $parent.$el.style.height = value + 'px'
+                }
             }
+
             document.onmouseup = () => {
                 document.onmousemove = null
             }

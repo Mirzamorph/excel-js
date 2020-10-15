@@ -129,6 +129,8 @@ $info-cell-bg: #f8f9fa;
 
   &__row {
     display: flex;
+    height: $cell-height;
+    min-height: $cell-height;
   }
 
   &__row-info,
@@ -136,7 +138,6 @@ $info-cell-bg: #f8f9fa;
     position: relative;
     flex-shrink: 0;
     width: $info-cell-width;
-    height: $cell-height;
     padding: 6px 0;
     font-size: 12px;
     box-sizing: border-box;
@@ -160,7 +161,6 @@ $info-cell-bg: #f8f9fa;
     width: $cell-width;
     max-width: 500px;
     min-width: 50px;
-    height: $cell-height;
     padding: 6px 3px;
     font-size: 14px;
     box-sizing: border-box;
