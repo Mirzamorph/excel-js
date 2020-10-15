@@ -43,9 +43,18 @@ class Dom {
         return this.$el.dataset
     }
 
-    setWidth(width) {
-        if (typeof width !== 'number') throw new Error(`Incorrect width for element ${this.$el}`)
-        return this.$el.style.width = `${width}px`
+    findAll(selector) {
+        return this.$el.querySelectorAll(selector)
+    }
+
+    css(styles = {}) {
+        Object.keys(styles).forEach(key => {
+            if (this.$el.style[key] !== undefined) {
+                this.$el.style[key] = styles[key]
+                return this
+            }
+            throw new Error(`Incorrect style property "${key}" for element ${this.$el.className}`)
+        })
     }
 }
 

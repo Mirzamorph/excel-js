@@ -178,11 +178,13 @@ $info-cell-bg: #f8f9fa;
   &__row-resize {
     position: absolute;
     bottom: 0;
-    width: 102%;
+    left: 0;
+    right: 0;
     height: 3px;
     background-color: $blue;
     opacity: 0;
     cursor: row-resize;
+    z-index: 99;
     transition: opacity 0.25s;
   }
 
@@ -190,11 +192,12 @@ $info-cell-bg: #f8f9fa;
     position: absolute;
     right: 0;
     top: 0;
+    bottom: 0;
     width: 4px;
-    height: 100%;
     background-color: $blue;
     opacity: 0;
     cursor: col-resize;
+    z-index: 99;
     transition: opacity 0.25s;
   }
 
